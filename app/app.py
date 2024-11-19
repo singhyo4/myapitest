@@ -55,7 +55,7 @@ def update_item(name):
 
 @app.get("/store/<string:name>/items")
 def get_item(name):
-    request_data = request.get_json()
+ #   request_data = request.get_json()
     for store in stores:
         if store["name"] == name:
             new_items = store["items"] 
@@ -64,10 +64,13 @@ def get_item(name):
 
 @app.get("/store/<string:name>")
 def get_mystore(name):
-    request_data = request.get_json()
+#    request_data = request.get_json()
     for store in stores:
         if store["name"] == name:
             return store["name"]
     return {"message": "store noot found"} , 400
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000,debug= True)
     
     
